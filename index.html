@@ -1,59 +1,196 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8"/>
-    <title>título de la cabecera</title>
-    <link rel="stylesheet" href="styles.css"/>
-  </head>
-  <body>
-    <title>este es el título del cuerpo</title>
-    <header>
-        <h1>Primer nivel de la jerarquía</h1>
-        <p>p</p>
-        <div id="container">
-            <header>
-              <h1>header</h1>
-            </header>  
-            <nav>
-              <ul>
-                <li>
-                  <a href="index.html">
-                    Contacto
-                  </a>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>busco adeptos >:)</title>
+    <style>
+        @font-face {
+            font-family: 'Arsenica Thin';
+            src: local('Arsenica Thin');
+        }
+        
+        @font-face {
+            font-family: 'Arsenica Antiqua';
+            src: local('Arsenica Antiqua');
+        }
 
-                </li>
-              </ul>
-            </nav>
-          <section>
-            <article class = "article">
-              <h2>Título del artículo</h2>
-              <p>Texto del artículo</p>
-            </article>
-            <article class = "article">
-              <h2>Título del artículo</h2>
-              <p>Texto del artículo</p>
-            </article>
-            <article class = "article">
-              <h2>Título del artículo</h2>
-              <p>Texto del artículo</p>
-            </article>
-            <article class = "article">
-              <h2>Título del artículo</h2>
-              <p>Texto del artículo</p>
-            </article>
-          </section>
-          <div id="cajilla">
-            texto
-          </div>
-          <aside>
-            <h2>Barra lateral</h2>
-            <form>
-              <input type="text">
-              <input type="submit" value="Buscar">
-            </form>
-          </aside>
-          <footer>dson-sys27 &copy; </footer>
-        </div>
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --accent-red: #8a0303;
+            --bright-red: #cc0000;
+            --dark-red: #2b0000;
+            --border-gothic: 4px double var(--accent-red);
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arsenica Antiqua', Georgia, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            background-image: 
+            radial-gradient(circle at center,
+                              #1a0000 0%,
+                              #000000 70%);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h3 {
+            font-family: 'Arsenica', 'Times New Roman', serif;
+            text-transform: uppercase;
+        }
+
+        header {
+            background: linear-gradient(to bottom, #000000, var(--dark-red), #000000);
+            color: var(--text-color);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: var(--border-gothic);
+            border-top: var(--border-gothic);
+            box-shadow: 0 0 20px var(--bright-red); /* Resplandor rojo */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px var(--accent-red), -1px -1px 2px #000;
+        }
+
+        header h2 {
+            margin: 15px 0 0;
+            font-weight: normal;
+            font-style: italic;
+            color: #d3d3d3;
+            font-size: 1.5em;
+            text-shadow: 1px 1px 3px var(--bright-red);
+        }
+
+        /* Cuerpo principal */
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            font-size: 1.3em;
+            background: var(--dark-red);
+            padding: 20px;
+            border: 2px solid var(--accent-red);
+            box-shadow: inset 0 0 10px #000000;
+        }
+
+        .columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .column {
+            flex: 1;
+            min-width: 300px;
+            background: #050000;
+            padding: 30px;
+            border: 3px solid var(--accent-red);
+            box-shadow: inset 0 0 20px var(--dark-red), 0 0 10px #000000;
+            transition: all 0.2s;
+        }
+
+        .column:hover {
+            border-color: var(--bright-red);
+            box-shadow: inset 0 0 30px var(--accent-red), 0 0 15px var(--bright-red);
+        }
+
+        .column h3 {
+            color: var(--text-color);
+            margin-top: 0;
+            font-size: 1.8em;
+            border-bottom: 2px dashed var(--accent-red);
+            padding-bottom: 10px;
+            text-shadow: 1px 1px 4px var(--bright-red);
+        }
+
+        .column p {
+            font-size: 1.1em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(to top, #000000, var(--dark-red));
+            color: var(--text-color);
+            border-top: var(--border-gothic);
+            font-size: 1em;
+            box-shadow: 0 -5px 15px var(--accent-red);
+        }
+        
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2em; }
+            header h2 { font-size: 1.2em; }
+            .column { flex-basis: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>¡¡SE IMPARTEN CLASES DE GUITARRA <br> EN MADRID!!</h1>
+        <h2>Barato, asequible y para todas las edades</h2>
     </header>
-  </body>
+
+    <main>
+        <section class="intro">
+            <p>¡Buenas! Soy David, llevo tocando la guitarra más de 8 años. Imparto mis clases con un carácter totalmente práctico y a domicilio.</p>
+        </section>
+
+        <section class="columns">
+            <div class="column">
+                <h3>PRECIOS</h3>
+                <p>
+                Tarifa estándar :<br><br>
+                <strong>1Hr = 15€</strong><br>
+                <strong>1Hr + 30min = 20€</strong><br>
+                <br>
+                Se puede llegar a un acuerdo por si el alumno necesitara clases de distinta duración a la estipulada
+                con tarifa proporcional.
+                </p>
+            </div>
+            
+            <div class="column">
+                <h3>SERVICIO</h3>
+                <p>Clases a domicilio en Madrid. Totalmente adaptadas a tu nivel musical y estilo preferido.<br>
+                Cualquier duda técnica te la respondo lo antes posible, sin ningún conste adicional</p>
+            </div>
+            
+            <div class="column">
+                <h3>CONTACTO</h3>
+                <p>Consulta gratis y sin compromiso escribiendo un Whatsapp al número de abajo ;)</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p> CONTACTO : +34 722 88 28 29 | Gracias por su interés <3</p>
+    </footer>
+
+</body>
 </html>
